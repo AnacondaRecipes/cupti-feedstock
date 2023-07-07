@@ -12,6 +12,8 @@ source:
   sha256: 9223c4af3aebe4a7bbed9abd9b163b03a1b34b855fbc2b4a0d1b706ac09a5a16 
 build:
   number: 0
+  missing_dso_whitelist:
+    - '*'
 
 requirements:
   run:
