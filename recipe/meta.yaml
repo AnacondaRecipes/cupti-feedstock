@@ -4,14 +4,12 @@ package:
   name: cupti
   version: {{ cupti_version }}
 
-# TODO
-# skip everything except linux-64? what platforms currently have cupti (only linux-64) and what recipes need it?
-
 source:
   url: https://developer.download.nvidia.com/compute/cuda/{{ cupti_version }}/local_installers/{{ runfile_name }}
   sha256: 9223c4af3aebe4a7bbed9abd9b163b03a1b34b855fbc2b4a0d1b706ac09a5a16 
 build:
   number: 0
+  skip: True # [not (linux and x86_64)]
   missing_dso_whitelist:
     - '*'
 
