@@ -1,0 +1,4 @@
+# Runfile name and URL from
+# https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=CentOS&target_version=7&target_type=runfile_local
+runfile_name:
+  cuda_11.8.0_520.61.05_linux.run
