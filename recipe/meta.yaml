@@ -26,7 +26,7 @@ test:
 # CUDA Profiling Tools Interface (CUPTI) Library
 about:
   home: https://developer.nvidia.com/cuda-toolkit
-  license: proprietary - Nvidia
+  license: LicenseRef-ProprietaryNvidia
   license_family: Proprietary
   summary: development environment for GPU-accelerated applications, CUPTI components
   description: |
