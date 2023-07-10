@@ -1,25 +1,32 @@
+{% set cupti_version= "11.8.0" %}
+
 package:
   name: cupti
-  version: 11.3.1
+  version: {{ cupti_version }}
 
 source:
-  path: .
+  url: https://developer.download.nvidia.com/compute/cuda/{{ cupti_version }}/local_installers/{{ runfile_name }}
+  sha256: 9223c4af3aebe4a7bbed9abd9b163b03a1b34b855fbc2b4a0d1b706ac09a5a16 
 build:
   number: 0
+  skip: True # [not (linux and x86_64)]
+  missing_dso_whitelist:
+    - '*'
 
 requirements:
   run:
-    cudatoolkit >=11.3,<11.4
+    # from https://docs.nvidia.com/cupti/r_main.html#r_compatibility_requirements
+    cudatoolkit >={{ cupti_version }}
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libcupti.so           # [linux]
-    - test -f ${PREFIX}/lib/libcupti.so.11.3      # [linux]
+    - test -f ${PREFIX}/lib/libcupti.so
+    - test -f ${PREFIX}/lib/libcupti.so.{{ '.'.join(cupti_version.split('.')[0:2]) }}
 
 # CUDA Profiling Tools Interface (CUPTI) Library
 about:
   home: https://developer.nvidia.com/cuda-toolkit
-  license: proprietary - Nvidia
+  license: LicenseRef-ProprietaryNvidia
   license_family: Proprietary
   summary: development environment for GPU-accelerated applications, CUPTI components
   description: |
